@@ -41,6 +41,7 @@ def clean_data():
     df['línea_credito'] = df.línea_credito.drop_duplicates()
     df['línea_credito'] = df.línea_credito.str.replace(" ", "_", regex=True)
     df['línea_credito'] = df.línea_credito.str.replace("-", "_", regex=True)
+    df['línea_credito'] = df.línea_credito.str.replace('soli diaria','solidaria', regex=True)
     df['línea_credito'] = df.línea_credito.str.lower()
     df['línea_credito'] = df.línea_credito.str.strip()
 
