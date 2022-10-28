@@ -6,7 +6,11 @@ Realice la limpieza del dataframe. Los tests evaluan si la limpieza fue realizad
 correctamente. Tenga en cuenta datos faltantes y duplicados.
 
 """
-df = pd.read_csv("solicitudes_credito.csv", sep=";")
+import pandas as pd
+
+def clean_data():
+    
+    df = pd.read_csv("solicitudes_credito.csv", sep=";")
     df = df[df.columns[1:]]
     df.drop_duplicates(inplace=True)
     #df.drop(['Unnamed: 0'], axis=1,inplace=True)
@@ -15,7 +19,8 @@ df = pd.read_csv("solicitudes_credito.csv", sep=";")
 
 
     df['sexo'] = df.sexo.drop_duplicates()
-    df['sexo'] = df.sexo.str.lower().strip()
+    df['sexo'] = df.sexo.str.lower()
+    df['sexo'] = df.sexo.str.strip()
 
     df['tipo_de_emprendimiento'] = df.tipo_de_emprendimiento.drop_duplicates()
     df['tipo_de_emprendimiento'] = df.tipo_de_emprendimiento.str.lower()
@@ -53,5 +58,4 @@ df = pd.read_csv("solicitudes_credito.csv", sep=";")
 
 
     df.drop_duplicates(inplace = True)
-    print(df.sexo.value_counts())
     return df
