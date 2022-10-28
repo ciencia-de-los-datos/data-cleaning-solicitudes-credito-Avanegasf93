@@ -11,11 +11,8 @@ import pandas as pd
 def clean_data():
     
     df = pd.read_csv("solicitudes_credito.csv", sep=";")
-    df = df[df.columns[1:]]
     df.drop_duplicates(inplace=True)
-    #df.drop(['Unnamed: 0'], axis=1,inplace=True)
     df.dropna(inplace=True)
-    df['fecha_de_beneficio'] = pd.to_datetime(df['fecha_de_beneficio'], dayfirst=True)
 
 
     df['sexo'] = df.sexo.str.lower()
@@ -48,7 +45,6 @@ def clean_data():
 
     df['barrio'] = df['barrio'].astype(str)
     df['línea_credito'] = df['línea_credito'].astype(str)
-    #df['monto_del_credito'] = df['monto_del_credito'].astype(float)
 
     df.drop_duplicates(inplace = True)
 
