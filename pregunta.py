@@ -11,7 +11,8 @@ import pandas as pd
 def clean_data():
     
    df = pd.read_csv("solicitudes_credito.csv", sep=";")
-   df.drop(['Unnamed: 0'], axis=1,inplace=True)
+   df.rename(columns = {'Unnamed: 0': 'index'}, inplace = True)
+   df.set_index('index', inplace = True)
 
    df.fecha_de_beneficio = pd.to_datetime(df.fecha_de_beneficio, dayfirst=True)
 
